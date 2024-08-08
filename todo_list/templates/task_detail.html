@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ task.title }}</h1>
+  <p>{{ task.description }}</p>
+  <p>Project: {{ task.project.name }}</p>
+  <p>Assigned to: {{ task.assigned_to.username }}</p>
+  <p>Status: {{ task.get_status_display }}</p>
+  <p>Due date: {{ task.due_date }}</p>
+
+  <h2>Comments</h2>
+  <ul>
+    {% for comment in task.comments.all %}
+      <li>{{ comment.content }} - <em>{{ comment.author.username }}</em></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'add_comment' task.id %}">Add a comment</a>
+{% endblock %}
