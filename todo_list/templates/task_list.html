@@ -2,6 +2,15 @@
 
 {% block content %}
   <h1>Tasks</h1>
+  <form method="get" class="form-inline mb-3">
+      <div class="form-group">
+          {{ form.status.label_tag }}
+          {{ form.status }}
+      </div>
+      <button type="submit" class="btn">Фільтрувати</button>
+  </form>
+
+
   <ul>
     {% for task in tasks %}
       <li><a href="{% url 'task_detail' task.id %}">{{ task.title }}</a></li>

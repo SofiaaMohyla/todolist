@@ -6,6 +6,11 @@
   <p>Project: {{ task.project.name }}</p>
   <p>Assigned to: {{ task.assigned_to.username }}</p>
   <p>Status: {{ task.get_status_display }}</p>
+  <form action="{% url 'task-complete' task.pk %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Помітити як виконано</button>
+  </form>
+
   <p>Due date: {{ task.due_date }}</p>
 
   <h2>Comments</h2>
