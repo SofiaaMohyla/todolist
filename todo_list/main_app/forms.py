@@ -14,7 +14,7 @@ class TaskForm(forms.ModelForm):
         super(TaskForm, self).__init__(*args, **kwargs)
 
         for field in self.fields:
-       с
+            existing_classes = self.fields[field].widget.attrs.get("class", "")
             self.fields[field].widget.attrs["class"] = f"{existing_classes} form-control".strip()
 
         existing_status_classes = self.fields["status"].widget.attrs.get("class", "")
